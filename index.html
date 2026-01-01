@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fawad Aziz - School Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f8ff;
+      color: #333;
+    }
+
+    header {
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin: 5px 0 0;
+    }
+
+    nav {
+      background: #023e8a;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .service {
+      flex: 1;
+      min-width: 250px;
+      background: #caf0f8;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .service:hover {
+      transform: scale(1.05);
+    }
+
+    .transmission {
+      background: #90e0ef;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .transmission:hover {
+      background: #48cae4;
+    }
+
+    input, textarea {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    button {
+      background: #0077b6;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #023e8a;
+    }
+
+    footer {
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media(max-width: 600px){
+      .services {
+        flex-direction: column;
+      }
+      input, textarea {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Fawad Aziz</h1>
+  <p>School Project: My First Website</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#transmission">Transmission</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <div class="box">
+    <h2>About Me</h2>
+    <p>
+      Hello! I am <b>Fawad Aziz</b>, a student learning web development.  
+      This is my school project website where I am showing basic HTML, CSS, and JavaScript skills.
+    </p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="box">
+    <h2>My Skills / Services</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Web Design</h3>
+        <p>Creating clean and simple website layouts.</p>
+      </div>
+      <div class="service">
+        <h3>HTML & CSS</h3>
+        <p>Learning to structure pages and style them beautifully.</p>
+      </div>
+      <div class="service">
+        <h3>JavaScript</h3>
+        <p>Adding interactive behavior to web pages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="transmission">
+  <div class="box transmission">
+    <h2>Transmission Section</h2>
+    <p id="trans-msg">Fill the form below to send a transmission.</p>
+
+    <form id="transForm" onsubmit="return sendTransmission();">
+      <input type="text" id="name" placeholder="Your Name" required><br>
+      <input type="email" id="email" placeholder="Your Email" required><br>
+      <textarea id="message" rows="4" placeholder="Your Message" required></textarea><br>
+      <button type="submit">Send Transmission</button>
+    </form>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="box">
+    <h2>Contact Me</h2>
+    <p id="msg">Click the button to send a message!</p>
+    <button onclick="sendMessage()">Send Message</button>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Fawad Aziz | School Project Website</p>
+</footer>
+
+<script>
+  function sendMessage() {
+    document.getElementById("msg").innerText =
+      "Thank you! Your message has been sent successfully.";
+  }
+
+  function sendTransmission() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    if(name && email && message){
+      document.getElementById("trans-msg").innerText =
+        `Transmission sent! \nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+      
+      // Clear the form
+      document.getElementById("transForm").reset();
+    }
+
+    return false; // prevent actual form submission
+  }
+</script>
+
+</body>
+</html>
